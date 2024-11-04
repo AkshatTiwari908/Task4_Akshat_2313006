@@ -130,6 +130,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function logout(){
+        const notesApp = document.getElementById('notesApp')
+        const loginForm = document.getElementById('loginForm')
+        if (loginForm.style.display === 'none') {
+            loginForm.style.display = 'block';
+          notesApp.style.display = 'none';
+        } else {
+            loginForm.style.display = 'none';
+            notesApp.style.display = 'block';
+        }
+    }
+
     if (token) {
         authSection.style.display = 'none';
         notesApp.style.display = 'block';
@@ -143,4 +155,5 @@ document.addEventListener("DOMContentLoaded", function() {
     window.toggleAuthForms = toggleAuthForms;
     window.startEdit = startEdit;
     window.deleteNote = deleteNote;
+    window.logout = logout;
 });
