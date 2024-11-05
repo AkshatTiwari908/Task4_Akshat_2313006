@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const authSection = document.getElementById('authSection');
     const notesApp = document.getElementById('notesApp');
 
-    // Set headers with token for authenticated requests
+    // Set  headers with token for authenticated requests
     async function fetchWithAuth(url, options = {}) {
         options.headers = {
             ...options.headers,
@@ -23,10 +23,12 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
         });
+    
         const data = await res.json();
         if (data.token) {
             localStorage.setItem('token', data.token);
-            token = data.token;
+            token = data.token;    
+           /*  authSection.reset(); */
             authSection.style.display = 'none';
             notesApp.style.display = 'block';
             fetchNotes();
@@ -34,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert('Login failed');
         }
     }
-
+    
      //registration function
     async function register() {
         const username = document.getElementById('registerUsername').value;
@@ -132,12 +134,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function logout(){
         const notesApp = document.getElementById('notesApp')
-        const loginForm = document.getElementById('loginForm')
-        if (loginForm.style.display === 'none') {
-            loginForm.style.display = 'block';
-          notesApp.style.display = 'none';
+        localStorage.removeItem('token');
+        token = null;
+        if (authSection.style.display === 'none') {
+            notesApp.style.display = 'none';
+            authSection.style.display = 'block';  
         } else {
-            loginForm.style.display = 'none';
+            authSection.style.display = 'none';
             notesApp.style.display = 'block';
         }
     }
