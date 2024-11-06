@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const path = require('path');  
 const app = express();
 const lrRoute = require('./controllers/login-route');
@@ -13,9 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Database Connection
-mongoose.connect('mongodb://localhost:27017/notesDB', {
-}).then(() => console.log("Connected to MongoDB"))
-  .catch(err => console.error("Failed to connect to MongoDB", err));
+
 
 
 // User Registration Route
