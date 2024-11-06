@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const apiBase = '/api/notes';
+    const apiBase = 'api/notes';
     let token = localStorage.getItem('token');
 
     const authSection = document.getElementById('authSection');
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     async function login() {
         const username = document.getElementById('loginUsername').value;
         const password = document.getElementById('loginPassword').value;
-        const res = await fetch('/api/login', {
+        const res = await fetch('/api/r/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
@@ -36,12 +36,24 @@ document.addEventListener("DOMContentLoaded", function() {
             alert('Login failed');
         }
     }
-    
+    //Logout
+    function logout(){
+        const notesApp = document.getElementById('notesApp')
+        localStorage.removeItem('token');
+        token = null;
+        if (authSection.style.display === 'none') {
+            notesApp.style.display = 'none';
+            authSection.style.display = 'block';  
+        } else {
+            authSection.style.display = 'none';
+            notesApp.style.display = 'block';
+        }
+    }
      //registration function
     async function register() {
         const username = document.getElementById('registerUsername').value;
         const password = document.getElementById('registerPassword').value;
-        const res = await fetch('/api/register', {
+        const res = await fetch('/api/r/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
@@ -129,19 +141,6 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             loginForm.style.display = 'none';
             registerForm.style.display = 'block';
-        }
-    }
-
-    function logout(){
-        const notesApp = document.getElementById('notesApp')
-        localStorage.removeItem('token');
-        token = null;
-        if (authSection.style.display === 'none') {
-            notesApp.style.display = 'none';
-            authSection.style.display = 'block';  
-        } else {
-            authSection.style.display = 'none';
-            notesApp.style.display = 'block';
         }
     }
 

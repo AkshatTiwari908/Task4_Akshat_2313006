@@ -29,14 +29,25 @@ h1 {
     margin-bottom: 20px;
 }
 
-.note-form {
+.auth-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
+#registerForm{
+    display: flex;
+  gap:2em;
+}
 
-.input, .textarea {
+.auth-form h2 {
+    color: #ffffff;
+    font-size: 1.5em;
+}
+.auth-form p{
+   color: #f9f9f9;
+}
+.input {
     width: 100%;
     padding: 10px;
     border: 1px solid #fffcfc;
@@ -44,6 +55,33 @@ h1 {
     font-size: 1em;
     background-color: #f9f9f9;
     transition: border 0.3s;
+}
+.link-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-decoration: underline;
+}
+
+.link-btn:hover {
+    color: #0056b3;
+}
+.note-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #fffcfc;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #f9f9f9;
 }
 
 .form-buttons {
@@ -136,4 +174,15 @@ h1 {
 
 .actions .edit-btn:hover {
     background-color: #0056b3;
+}
+.logout-btn {
+    margin-top: 20px;
+    background-color: #f44336;
+    color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
 }
