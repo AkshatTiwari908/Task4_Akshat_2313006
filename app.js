@@ -13,14 +13,14 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Database Connection
-mongoose.connect('mongodb+srv://akshattiwari487:RMZBaJUhdYPa22Lg@cluster0.uzydo.mongodb.net/', {
+mongoose.connect('mongodb://localhost:27017/notesDB', {
 }).then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error("Failed to connect to MongoDB", err));
 
 
 // User Registration Route
 app.use('/',lrRoute)
-app.use('/',crudRoute)
+app.use('/api/notes',crudRoute)
 
 // Serve Frontend
 app.get('*', (req, res) => {

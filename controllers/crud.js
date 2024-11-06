@@ -3,7 +3,7 @@ const crudRoute = express.Router()
 const {User,Note}= require('../models/data')
 const authenticateToken = require('../middlewares/authenticate')
 
-crudRoute.get('api/notes', authenticateToken, async (req, res) => {
+crudRoute.get('/', authenticateToken, async (req, res) => {
     try {
         const notes = await Note.find({ userId: req.user.userId });
         res.json(notes);
@@ -13,7 +13,7 @@ crudRoute.get('api/notes', authenticateToken, async (req, res) => {
 });
 
 // Add Note Route
-crudRoute.post('api/notes', authenticateToken, async (req, res) => {
+crudRoute.post('/', authenticateToken, async (req, res) => {
     const { title, content } = req.body;
     try {
         const newNote = await Note.create({
@@ -28,7 +28,7 @@ crudRoute.post('api/notes', authenticateToken, async (req, res) => {
 });
 
 // Update Note Route
-crudRoute.put('api/notes/:id', authenticateToken, async (req, res) => {
+crudRoute.put('/:id', authenticateToken, async (req, res) => {
     const { id } = req.params;
     const { title, content } = req.body;
     try {
@@ -45,7 +45,7 @@ crudRoute.put('api/notes/:id', authenticateToken, async (req, res) => {
 });
 
 // Delete Note Route
-crudRoute.delete('/notes/:id', authenticateToken, async (req, res) => {
+crudRoute.delete('/:id', authenticateToken, async (req, res) => {
     const { id } = req.params;
     try {
         const deletedNote = await Note.findOneAndDelete({ _id: id, userId: req.user.userId });

@@ -34,12 +34,9 @@ h1 {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
-}
-#registerForm{
-    display: flex;
-  gap:2em;
-}
 
+    width: 100%;
+}
 .auth-form h2 {
     color: #ffffff;
     font-size: 1.5em;

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (data.token) {
             localStorage.setItem('token', data.token);
             token = data.token;    
-           /*  authSection.reset(); */
+          
             authSection.style.display = 'none';
             notesApp.style.display = 'block';
             fetchNotes();
@@ -40,10 +40,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function logout(){
         const notesApp = document.getElementById('notesApp')
         localStorage.removeItem('token');
+        
         token = null;
         if (authSection.style.display === 'none') {
             notesApp.style.display = 'none';
-            authSection.style.display = 'block';  
+            authSection.style.display = 'flex';  
         } else {
             authSection.style.display = 'none';
             notesApp.style.display = 'block';
@@ -136,11 +137,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const registerForm = document.getElementById('registerForm');
 
         if (loginForm.style.display === 'none') {
-            loginForm.style.display = 'block';
+            loginForm.style.display = 'flex';
             registerForm.style.display = 'none';
         } else {
             loginForm.style.display = 'none';
-            registerForm.style.display = 'block';
+            registerForm.style.display = 'flex';
         }
     }
 
@@ -149,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
         notesApp.style.display = 'block';
         fetchNotes();
     } else {
-        authSection.style.display = 'block';
+        authSection.style.display = 'flex';
     }
 
     window.login = login;
