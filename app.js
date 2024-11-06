@@ -3,19 +3,18 @@ const path = require('path');
 const app = express();
 const lrRoute = require('./controllers/login-route');
 const crudRoute = require('./controllers/crud');
-// Configuration and Constants
 
+// Configuration and Constants
 const PORT = 3000;
 
+
+const cors = require('cors');
+app.use(cors({
+  origin: 'https://notesnest-28lc.onrender.com/',
+}));
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Database Connection
-
-
-
-// User Registration Route
 app.use('/',lrRoute)
 app.use('/api/notes',crudRoute)
 
